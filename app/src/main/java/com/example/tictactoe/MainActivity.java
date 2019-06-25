@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
+    //create 2d array of 3 rows and 3 column as the layout
     private Button [][] buttons=new Button[3][3];
     
     private boolean player1Turn;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         player1=(TextView)findViewById(R.id.textView_1);
         player2=(TextView)findViewById(R.id.textView2);
         
-        player1Turn=true
+        player1Turn=true;
         
         //assigning buttons to array
         buttons[0][0]=findViewById(R.id.btn_00);
@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }        
         //when reset button is clicked, the game will restart and scores will restart to 0.
         reset.setOnClickListener(new View.OnClickListener(){
-            public voi onClick(View v){
+            public void onClick(View v){
+                score1=0;
+                score2=0;
                 player1.setText("Player1: "+score1);
                 player2.setText("Player2: "+score2);
                 
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onClick(View v) {
-        if (player1Turn == true) {
+        if (player1Turn) {
             ((Button) v).setText("X");
         } else {
             ((Button) v).setText("O");
@@ -119,6 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }
-    return false; //I'm not sure if it should be false, i just had to return something
+    return true; //I'm not sure if it should be true, i just had to return something
     }
 }
